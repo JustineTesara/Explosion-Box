@@ -202,6 +202,366 @@
           opacity: 0;
         }
       }
+
+      /* Confetti */
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #ff4b5c;
+        animation: confettiFall 3s linear forwards;
+      }
+
+      @keyframes confettiFall {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      /* Love Letter Modal */
+      .letter-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .letter-overlay.show {
+        display: flex;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .love-letter {
+        background: #fff9e6;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+        animation: letterSlideIn 0.8s ease;
+        border: 3px solid #ff4b5c;
+      }
+
+      @keyframes letterSlideIn {
+        from {
+          transform: scale(0.5) rotate(-10deg);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+      }
+
+      .letter-header {
+        text-align: center;
+        color: #ff4b5c;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-family: "Courier New", monospace;
+      }
+
+      .letter-content {
+        font-family: "Georgia", serif;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #333;
+        text-align: justify;
+      }
+
+      .letter-signature {
+        text-align: right;
+        margin-top: 30px;
+        font-style: italic;
+        color: #ff4b5c;
+        font-size: 18px;
+      }
+
+      .close-letter {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #ff4b5c;
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+      }
+
+      .close-letter:hover {
+        transform: scale(1.1);
+        background: #ff2d3f;
+      }
+
+      .letter-button {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .read-letter-btn {
+        background: #ff4b5c;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(255, 75, 92, 0.4);
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeInButton 1s ease 2s forwards;
+      }
+
+      @keyframes fadeInButton {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .read-letter-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 75, 92, 0.6);
+      }
+
+      /* Timeline Styles */
+      .timeline-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1001;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .timeline-overlay.show {
+        display: flex;
+      }
+
+      .timeline-container {
+        background: linear-gradient(135deg, #fff9e6, #ffe8cc);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        max-width: 600px;
+        max-height: 85vh;
+        overflow-y: auto;
+        position: relative;
+        animation: letterSlideIn 0.8s ease;
+        border: 4px solid #ff4b5c;
+      }
+
+      .timeline-header {
+        text-align: center;
+        color: #ff4b5c;
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 30px;
+        font-family: "Georgia", serif;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 40px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, #ff4b5c, #ffd93d);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 40px;
+        animation: slideInLeft 0.6s ease forwards;
+        opacity: 0;
+      }
+
+      .timeline-item:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .timeline-item:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .timeline-item:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .timeline-item:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+      .timeline-item:nth-child(5) {
+        animation-delay: 1s;
+      }
+      .timeline-item:nth-child(6) {
+        animation-delay: 1.2s;
+      }
+
+      @keyframes slideInLeft {
+        from {
+          transform: translateX(-30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -34px;
+        width: 20px;
+        height: 20px;
+        background: #ff4b5c;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        box-shadow: 0 0 0 3px #ff4b5c;
+      }
+
+      .timeline-date {
+        font-weight: bold;
+        color: #ff4b5c;
+        font-size: 18px;
+        margin-bottom: 8px;
+        font-family: "Georgia", serif;
+      }
+
+      .timeline-content {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #ff4b5c;
+      }
+
+      .timeline-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline-title {
+        font-weight: bold;
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      .timeline-description {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .timeline-location {
+        font-size: 13px;
+        color: #999;
+        margin-top: 8px;
+        font-style: italic;
+      }
+
+      .close-timeline {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #ff4b5c;
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        z-index: 10;
+      }
+
+      .close-timeline:hover {
+        transform: scale(1.1);
+        background: #ff2d3f;
+      }
+
+      .timeline-btn {
+        background: #ffd93d;
+        color: #333;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(255, 217, 61, 0.4);
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeInButton 1s ease 2.5s forwards;
+        margin-left: 15px;
+      }
+
+      .timeline-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 217, 61, 0.6);
+      }
+
+      .special-date {
+        background: linear-gradient(135deg, #ff4b5c, #ff6b9d);
+        color: white;
+        font-size: 20px;
+        padding: 25px;
+        text-align: center;
+        animation: pulse 2s ease infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
     </style>
   </head>
   <body>
@@ -245,31 +605,287 @@
 
     <!-- Message -->
     <div class="message">I LOVE YOU ALAM MO YAN 💖🌻</div>
-  </body>
-  <script>
-    const box = document.getElementById("explosionBox");
-    const body = document.querySelector("body");
 
-    box.addEventListener("click", () => {
-      box.classList.toggle("open");
+    <!-- Read Letter Button -->
+    <div class="letter-button">
+      <button class="read-letter-btn" id="letterBtn">💌 Read My Letter</button>
+      <button class="timeline-btn" id="timelineBtn">📅 Our Journey</button>
+    </div>
 
-      // spawn floating hearts if opening
-      if (box.classList.contains("open")) {
-        for (let i = 0; i < 15; i++) {
-          let heart = document.createElement("div");
-          heart.classList.add("heart");
-          heart.innerHTML = "❤️";
-          heart.style.left = Math.random() * window.innerWidth + "px";
-          heart.style.bottom = "0px";
-          heart.style.fontSize = Math.random() * 20 + 20 + "px";
-          body.appendChild(heart);
+    <!-- Love Letter Modal -->
+    <div class="letter-overlay" id="letterOverlay">
+      <div class="love-letter">
+        <button class="close-letter" id="closeBtn">×</button>
+        <div class="letter-header">💖 To My Dearest Love 💖</div>
+        <div class="letter-content">
+          <p>My Dearest Love,</p>
 
-          // remove after animation
-          setTimeout(() => {
-            heart.remove();
-          }, 4000);
+          <p>Happy Birthday! 🎉🎂</p>
+
+          <p>
+            I want you to know that I truly love you with all my heart. Every
+            single day, I pray for your safety and well-being. Please always
+            keep safe, stay strong, and never be afraid to face whatever
+            challenges come your way. You are so much stronger than you know,
+            and I believe in you completely.
+          </p>
+
+          <p>
+            Today is YOUR day, and you deserve all the happiness in the world! I
+            made this special gift just to see that beautiful smile on your face
+            and to remind you how incredibly special you are to me. I hope this
+            brings you joy and makes your birthday even more memorable.
+          </p>
+
+          <p>
+            Enjoy your day to the fullest, my love. Celebrate, laugh, and be
+            happy because you deserve every bit of it and so much more!
+          </p>
+
+          <p>
+            Thank you for loving me. Thank you for being in my life. You make
+            everything brighter and better just by being you. I am so grateful
+            and blessed to have you.
+          </p>
+
+          <p>I love you more than words can say, alam mo yan! 💖🌻</p>
+
+          <div class="letter-signature">
+            Forever Yours,<br />
+            Your Love ❤️
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline Modal -->
+    <div class="timeline-overlay" id="timelineOverlay">
+      <div class="timeline-container">
+        <button class="close-timeline" id="closeTimelineBtn">×</button>
+        <div class="timeline-header">💕 Our Beautiful Journey 💕</div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">April 6, 2025</div>
+            <div class="timeline-content">
+              <img
+                src="./Sheilay/0406.jfif"
+                alt="April 6"
+                class="timeline-image"
+              />
+              <div class="timeline-title">The Beginning 💖</div>
+              <div class="timeline-description">
+                The day I asked you to date officially. This was the start of
+                something beautiful between us.
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">April 21, 2025</div>
+            <div class="timeline-content">
+              <img
+                src="./Sheilay/0421.jpg"
+                alt="Mayon Skyline"
+                class="timeline-image"
+              />
+              <div class="timeline-title">Our First Ride Date 🏍️🌋</div>
+              <div class="timeline-description">
+                We rode to Mayon Skyline and witnessed the majestic Mayon
+                Volcano without any clouds covering its crater. It was such a
+                happy experience with you, Sheila. Appreciating the beauty of
+                the place together made it even more special.
+              </div>
+              <div class="timeline-location">
+                📍 Mayon Skyline, Albay, Bicol
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">July 11, 2025</div>
+            <div class="timeline-content">
+              <img
+                src="./Sheilay/711.jpg"
+                alt="Road Trip"
+                class="timeline-image"
+              />
+              <div class="timeline-title">
+                Our Epic Road Trip Adventure 🚗✨
+              </div>
+              <div class="timeline-description">
+                Our 2nd road trip and what an adventure! We started at Sorsogon
+                Sports Arena - even though it was hot at noon, we enjoyed every
+                moment. Then we went to Legazpi Highlands for go-cart fun racing
+                downhill. Finally, we ended at Farmplate, the perfect place to
+                rest and appreciate the beauty of nature. I am so grateful for
+                this day with you.
+              </div>
+              <div class="timeline-location">
+                📍 Sorsogon, Legazpi Highlands & Farmplate, Bicol
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">August 11, 2025</div>
+            <div class="timeline-content">
+              <img
+                src="./Sheilay/811.jfif"
+                alt="Manila Date"
+                class="timeline-image"
+              />
+              <div class="timeline-title">Our First Manila Date 🏙️</div>
+              <div class="timeline-description">
+                Our very first date here in Manila - a new chapter in a
+                different city, but the same wonderful feeling of being with
+                you.
+              </div>
+              <div class="timeline-location">📍 Manila</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">September 7, 2025</div>
+            <div class="timeline-content">
+              <img
+                src="./Sheilay/0907.jpg"
+                alt="My Birthday"
+                class="timeline-image"
+              />
+              <div class="timeline-title">Celebrating My Birthday 🎂</div>
+              <div class="timeline-description">
+                You made my birthday so special! We went to Intramuros and
+                appreciated the beauty and classic vibes of the Philippines
+                together. Having you by my side made it the best birthday ever.
+              </div>
+              <div class="timeline-location">📍 Intramuros, Manila</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">October 19, 2025</div>
+            <div class="timeline-content special-date">
+              <img
+                src="./Sheilay/photo_2025-04-16_10-57-59.jpg"
+                alt="Her Birthday"
+                class="timeline-image"
+                style="margin-bottom: 15px"
+              />
+              <div class="timeline-title">🎉 TODAY - Your Special Day! 🎂</div>
+              <div
+                class="timeline-description"
+                style="color: white; margin-top: 10px"
+              >
+                Happy Birthday, Sheila Marie!!! Today we celebrate YOU and all
+                the joy you bring into my life. Here's to many more beautiful
+                memories together! 💖🌻
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const box = document.getElementById("explosionBox");
+      const body = document.querySelector("body");
+      const letterBtn = document.getElementById("letterBtn");
+      const letterOverlay = document.getElementById("letterOverlay");
+      const closeBtn = document.getElementById("closeBtn");
+      const timelineBtn = document.getElementById("timelineBtn");
+      const timelineOverlay = document.getElementById("timelineOverlay");
+      const closeTimelineBtn = document.getElementById("closeTimelineBtn");
+
+      // Box explosion with confetti and hearts
+      box.addEventListener("click", () => {
+        box.classList.toggle("open");
+
+        if (box.classList.contains("open")) {
+          // Spawn confetti
+          for (let i = 0; i < 50; i++) {
+            let confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+
+            // Random colors
+            const colors = [
+              "#ff4b5c",
+              "#ffd93d",
+              "#6bcf7f",
+              "#4d96ff",
+              "#ff6b9d",
+            ];
+            confetti.style.background =
+              colors[Math.floor(Math.random() * colors.length)];
+
+            confetti.style.left = Math.random() * window.innerWidth + "px";
+            confetti.style.top = "-20px";
+            confetti.style.width = Math.random() * 10 + 5 + "px";
+            confetti.style.height = Math.random() * 10 + 5 + "px";
+            confetti.style.animationDelay = Math.random() * 0.5 + "s";
+
+            body.appendChild(confetti);
+
+            setTimeout(() => {
+              confetti.remove();
+            }, 3000);
+          }
+
+          // Spawn floating hearts
+          for (let i = 0; i < 15; i++) {
+            let heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.bottom = "0px";
+            heart.style.fontSize = Math.random() * 20 + 20 + "px";
+            heart.style.animationDelay = Math.random() * 0.5 + "s";
+            body.appendChild(heart);
+
+            setTimeout(() => {
+              heart.remove();
+            }, 4000);
+          }
         }
-      }
-    });
-  </script>
+      });
+
+      // Love letter popup
+      letterBtn.addEventListener("click", () => {
+        letterOverlay.classList.add("show");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        letterOverlay.classList.remove("show");
+      });
+
+      // Close on overlay click
+      letterOverlay.addEventListener("click", (e) => {
+        if (e.target === letterOverlay) {
+          letterOverlay.classList.remove("show");
+        }
+      });
+
+      // Timeline popup
+      timelineBtn.addEventListener("click", () => {
+        timelineOverlay.classList.add("show");
+      });
+
+      closeTimelineBtn.addEventListener("click", () => {
+        timelineOverlay.classList.remove("show");
+      });
+
+      // Close timeline on overlay click
+      timelineOverlay.addEventListener("click", (e) => {
+        if (e.target === timelineOverlay) {
+          timelineOverlay.classList.remove("show");
+        }
+      });
+    </script>
+  </body>
 </html>
