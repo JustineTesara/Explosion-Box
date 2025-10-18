@@ -552,7 +552,291 @@
         text-align: center;
         animation: pulse 2s ease infinite;
       }
+      /* Hidden Hearts Game Styles */
+      .surprise-btn {
+        background: linear-gradient(135deg, #ff6b9d, #ff4b5c);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeInButton 1s ease 3s forwards;
+        margin-left: 15px;
+      }
 
+      .surprise-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
+      }
+
+      .hidden-heart {
+        position: absolute;
+        font-size: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10;
+        animation: heartBounce 2s ease-in-out infinite;
+      }
+
+      @keyframes heartBounce {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(-10px) scale(1.1);
+        }
+      }
+
+      .hidden-heart:hover {
+        transform: scale(1.3) rotate(15deg);
+      }
+
+      .hidden-heart.found {
+        animation: heartCollect 0.6s ease forwards;
+      }
+
+      @keyframes heartCollect {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.5) rotate(180deg);
+        }
+        100% {
+          transform: scale(0) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .game-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .game-overlay.show {
+        display: flex;
+      }
+
+      .game-container {
+        position: relative;
+        width: 90%;
+        height: 90%;
+        max-width: 1000px;
+        max-height: 700px;
+        background: linear-gradient(135deg, #ffe8f0, #ffd6e8);
+        border-radius: 20px;
+        border: 4px solid #ff4b5c;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+      }
+
+      .game-header {
+        background: linear-gradient(135deg, #ff4b5c, #ff6b9d);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .game-progress {
+        background: white;
+        padding: 15px;
+        text-align: center;
+        font-size: 18px;
+        color: #ff4b5c;
+        font-weight: bold;
+      }
+
+      .game-area {
+        position: relative;
+        height: calc(100% - 140px);
+        background: linear-gradient(135deg, #fff9f0, #ffe8cc);
+        overflow: hidden;
+      }
+
+      .close-game {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: white;
+        color: #ff4b5c;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .close-game:hover {
+        transform: scale(1.1) rotate(90deg);
+        background: #ff4b5c;
+        color: white;
+      }
+
+      .surprise-message {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        max-width: 90%;
+        width: 500px;
+        max-height: 80%;
+        overflow-y: auto;
+        border: 4px solid #ff4b5c;
+        animation: messageReveal 0.8s ease;
+      }
+
+      @media (max-width: 768px) {
+        .surprise-message {
+          padding: 20px;
+          width: 85%;
+          max-height: 70%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .surprise-message {
+          padding: 15px;
+          width: 90%;
+          max-height: 65%;
+          border: 3px solid #ff4b5c;
+        }
+      }
+
+      @keyframes messageReveal {
+        0% {
+          transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1) rotate(0);
+          opacity: 1;
+        }
+      }
+
+      .surprise-message.show {
+        display: block;
+      }
+
+      .surprise-title {
+        font-size: 28px;
+        color: #ff4b5c;
+        font-weight: bold;
+        margin-bottom: 15px;
+        animation: titleGlow 2s ease-in-out infinite;
+      }
+
+      @media (max-width: 768px) {
+        .surprise-title {
+          font-size: 24px;
+          margin-bottom: 12px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .surprise-title {
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+      }
+
+      @keyframes titleGlow {
+        0%,
+        100% {
+          text-shadow: 0 0 10px rgba(255, 75, 92, 0.5);
+        }
+        50% {
+          text-shadow: 0 0 20px rgba(255, 75, 92, 0.8);
+        }
+      }
+
+      .surprise-content {
+        font-size: 16px;
+        color: #333;
+        line-height: 1.8;
+        font-family: "Georgia", serif;
+      }
+
+      .surprise-content p {
+        margin: 10px 0;
+      }
+
+      @media (max-width: 768px) {
+        .surprise-content {
+          font-size: 15px;
+          line-height: 1.6;
+        }
+
+        .surprise-content p {
+          margin: 8px 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .surprise-content {
+          font-size: 14px;
+          line-height: 1.5;
+        }
+
+        .surprise-content p {
+          margin: 6px 0;
+        }
+      }
+
+      .game-instructions {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        font-size: 16px;
+        color: #ff4b5c;
+        font-weight: bold;
+        animation: instructionPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes instructionPulse {
+        0%,
+        100% {
+          transform: translateX(-50%) scale(1);
+        }
+        50% {
+          transform: translateX(-50%) scale(1.05);
+        }
+      }
       @keyframes pulse {
         0%,
         100% {
@@ -610,6 +894,7 @@
     <div class="letter-button">
       <button class="read-letter-btn" id="letterBtn">💌 Read My Letter</button>
       <button class="timeline-btn" id="timelineBtn">📅 Our Journey</button>
+      <button class="surprise-btn" id="surpriseBtn">🎁 Find the Hearts!</button>
     </div>
 
     <!-- Love Letter Modal -->
@@ -798,6 +1083,51 @@
       </div>
     </div>
 
+    <!-- Hidden Hearts Game -->
+    <div class="game-overlay" id="gameOverlay">
+      <div class="game-container">
+        <button class="close-game" id="closeGameBtn">×</button>
+        <div class="game-header">💝 Find All the Hidden Hearts! 💝</div>
+        <div class="game-progress" id="gameProgress">
+          Hearts Found: <span id="heartsFound">0</span> /
+          <span id="totalHearts">10</span>
+        </div>
+        <div class="game-area" id="gameArea">
+          <div class="game-instructions">
+            Click on the hidden hearts to reveal a special surprise! 💕
+          </div>
+
+          <!-- Surprise message (hidden initially) -->
+          <div class="surprise-message" id="surpriseMessage">
+            <div class="surprise-title">🎉 You Found Them All! 🎉</div>
+            <div class="surprise-content">
+              <p style="font-size: 24px; margin-bottom: 20px">💖✨💖</p>
+              <p>You're not just amazing at finding hearts...</p>
+              <p><strong>You've completely stolen mine!</strong></p>
+              <p style="margin-top: 20px">
+                Every moment with you is like finding a hidden treasure. You
+                make every day brighter, every laugh sweeter, and every memory
+                more precious.
+              </p>
+              <p
+                style="
+                  font-size: 22px;
+                  color: #ff4b5c;
+                  font-weight: bold;
+                  margin-top: 25px;
+                "
+              >
+                I'm so lucky to have you in my life! 🌻💖
+              </p>
+              <p style="font-size: 16px; color: #666; margin-top: 15px">
+                Happy Birthday, my love! Here's to finding more beautiful
+                moments together! 🎂🎉
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
       const box = document.getElementById("explosionBox");
       const body = document.querySelector("body");
@@ -889,6 +1219,162 @@
       timelineOverlay.addEventListener("click", (e) => {
         if (e.target === timelineOverlay) {
           timelineOverlay.classList.remove("show");
+        }
+      });
+      // Hidden Hearts Game
+      const surpriseBtn = document.getElementById("surpriseBtn");
+      const gameOverlay = document.getElementById("gameOverlay");
+      const closeGameBtn = document.getElementById("closeGameBtn");
+      const gameArea = document.getElementById("gameArea");
+      const heartsFoundSpan = document.getElementById("heartsFound");
+      const totalHeartsSpan = document.getElementById("totalHearts");
+      const surpriseMessage = document.getElementById("surpriseMessage");
+
+      let heartsFound = 0;
+      const totalHearts = 10;
+      let hearts = [];
+
+      function createHiddenHearts() {
+        hearts = [];
+        heartsFound = 0;
+        heartsFoundSpan.textContent = "0";
+        totalHeartsSpan.textContent = totalHearts;
+
+        // Remove any existing hearts
+        document.querySelectorAll(".hidden-heart").forEach((h) => h.remove());
+
+        const heartEmojis = [
+          "💖",
+          "💕",
+          "💗",
+          "💓",
+          "💝",
+          "❤️",
+          "💘",
+          "💞",
+          "💟",
+          "♥️",
+        ];
+
+        for (let i = 0; i < totalHearts; i++) {
+          const heart = document.createElement("div");
+          heart.classList.add("hidden-heart");
+          heart.innerHTML = heartEmojis[i];
+          heart.dataset.id = i;
+
+          // Random position within game area
+          const randomX = Math.random() * 85 + 5; // 5% to 90%
+          const randomY = Math.random() * 70 + 10; // 10% to 80%
+
+          heart.style.left = randomX + "%";
+          heart.style.top = randomY + "%";
+
+          heart.addEventListener("click", () => collectHeart(heart));
+
+          gameArea.appendChild(heart);
+          hearts.push(heart);
+        }
+      }
+
+      function collectHeart(heart) {
+        if (heart.classList.contains("found")) return;
+
+        heart.classList.add("found");
+        heartsFound++;
+        heartsFoundSpan.textContent = heartsFound;
+
+        // Create sparkle effect
+        createSparkles(heart);
+
+        // Play celebration animation
+        if (heartsFound === totalHearts) {
+          setTimeout(() => {
+            document.querySelector(".game-instructions").style.display = "none";
+            surpriseMessage.classList.add("show");
+            createCelebration();
+          }, 500);
+        }
+      }
+
+      function createSparkles(element) {
+        const rect = element.getBoundingClientRect();
+        const gameRect = gameArea.getBoundingClientRect();
+
+        for (let i = 0; i < 8; i++) {
+          const sparkle = document.createElement("div");
+          sparkle.innerHTML = "✨";
+          sparkle.style.position = "absolute";
+          sparkle.style.left =
+            rect.left - gameRect.left + rect.width / 2 + "px";
+          sparkle.style.top = rect.top - gameRect.top + rect.height / 2 + "px";
+          sparkle.style.fontSize = "20px";
+          sparkle.style.pointerEvents = "none";
+          sparkle.style.zIndex = "100";
+
+          const angle = (Math.PI * 2 * i) / 8;
+          const distance = 50;
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance;
+
+          sparkle.style.animation = "none";
+          gameArea.appendChild(sparkle);
+
+          setTimeout(() => {
+            sparkle.style.transition = "all 0.6s ease-out";
+            sparkle.style.transform = `translate(${tx}px, ${ty}px) scale(0)`;
+            sparkle.style.opacity = "0";
+          }, 10);
+
+          setTimeout(() => sparkle.remove(), 600);
+        }
+      }
+
+      function createCelebration() {
+        const gameRect = gameArea.getBoundingClientRect();
+
+        for (let i = 0; i < 30; i++) {
+          setTimeout(() => {
+            const confetti = document.createElement("div");
+            confetti.style.position = "absolute";
+            confetti.style.left = Math.random() * 100 + "%";
+            confetti.style.top = "0";
+            confetti.style.width = "10px";
+            confetti.style.height = "10px";
+            confetti.style.borderRadius = "50%";
+            confetti.style.pointerEvents = "none";
+
+            const colors = [
+              "#ff4b5c",
+              "#ffd93d",
+              "#6bcf7f",
+              "#4d96ff",
+              "#ff6b9d",
+            ];
+            confetti.style.background =
+              colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animation = "confettiFall 3s linear forwards";
+
+            gameArea.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 3000);
+          }, i * 50);
+        }
+      }
+
+      surpriseBtn.addEventListener("click", () => {
+        gameOverlay.classList.add("show");
+        surpriseMessage.classList.remove("show");
+        document.querySelector(".game-instructions").style.display = "block";
+        createHiddenHearts();
+      });
+
+      closeGameBtn.addEventListener("click", () => {
+        gameOverlay.classList.remove("show");
+      });
+
+      gameOverlay.addEventListener("click", (e) => {
+        if (e.target === gameOverlay) {
+          gameOverlay.classList.remove("show");
         }
       });
     </script>
